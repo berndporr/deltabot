@@ -12,8 +12,7 @@ Optionally you can add the C1 LIDAR to the robot: https://github.com/berndporr/c
 </p>
 
 ## How to get started
-- For the list of components used refer to [List.md](List.md).
-- To first set up your RADXA ROCK5B computer, and configure its GPIO pins refer to [Setup.md](Setup.md).
+- For the list of components used refer to [BOM.md](BOM.md).
 - For details on the DeltaBot schematic, pcb, and footprint library refer to [PCB.md](PCB.md).
 
 ### Additional Mechanical Parts
