@@ -6,12 +6,10 @@
 - RADXA ROCK5B - [Radxa ROCK 5 Model B 8GB Single Board Computer, 249-3159 \(Board Computer\)](https://www.amazon.co.uk/Single-Computer-Rockchip-Cortex-A76-Rock/dp/B0BRL4PCG7/) 
 - x2 Parallax Continuous Rotation Servo Motors - [900-00008 PARALLAX, SERVO- CONTINUOUS ROTATION-S3 SERVO](https://uk.farnell.com/parallax/900-00008/servo-continuous-rotation-s3-servo/dp/2819351?srsltid=AfmBOor-59KId8cjt06daPtLfuqm3XnxUg93HBlsBrfq8Yjar4slnPo3) 
 - x2 Kitronic Wheels - [2593-SV KITRONIK, Wheel Kit, White, 5 Spoke, ABS, Rotation Servo Motors | Newark Electronics](https://www.newark.com/kitronik/2593-sv/wheels-white-rotation-servo-motor/dp/30AK0833)
-- RPi Camera Module 3 - [Raspberry Pi Camera Module 3](https://thepihut.com/products/raspberry-pi-camera-module-3?variant=42305752039619&country=GB&currency=GBP&utm_medium=product_sync&utm_source=google&utm_content=sag_organic&utm_campaign=sag_organic&gad_source=1&gbraid=0AAAAADfQ4GHKQ6kJJTtKl7UpXk53fjlMu&gclid=CjwKCAiAlPu9BhAjEiwA5NDSA7fn42saFvjk1PDMoyioz0-9xFKDwOpp7nhNTzq9qZoqG7rU4X97iRoC0W8QAvD_BwE)
 - Anker Zolo PowerBank - [Anker Zolo Power Bank, 20,000mAh 30W](https://www.amazon.co.uk/dp/B0CZ9LH53B?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1)
 
 ### 3D-Printed:
 - x2 Servo Mounting Brackets
-- Camera Mounting Bracket
 - Castor Ball Mounting Bracket
 - Power Bank Stage
 
