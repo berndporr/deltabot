@@ -8,7 +8,6 @@ Optionally you can add the C1 LIDAR to the robot: https://github.com/berndporr/c
 <p align="center">
   <img src="images/deltabot.jpg"/>
   <img src="images/goals.png" />
-  <img src="images/schematic.png" />
 </p>
 
 ## How to get started
