@@ -4,7 +4,9 @@
 The Delta Bot is an open-source DIY robot AI platform that uses Radxa's single board computer, the [Rock 5B](https://radxa.com/products/rock5/5b/), a simple [camera module](https://www.raspberrypi.com/products/camera-module-v2/) and Parallax's [Continuous Rotation Servo Motors](https://www.parallax.com/product/parallax-continuous-rotation-servo-factory-centered/).
 
 <p align="center">
-  <img src="deltabot"/>
+  <img src="images/deltabot.jpg"/>
+  <img src="images/goals.png" />
+  <img src="images/schematic.png" />
 </p>
 
 ## How to get started
@@ -19,7 +21,6 @@ These were used to secure the external components onto the Single PCB Chassis:
   <img src="images/bracket2.png" alt="Side View" width="400"/>
   <img src="images/stage.png" alt="Front View" width="400"/>
   <img src="images/ball.png" alt="Side View" width="400"/>
-  <img src="images/cam2.png" alt="Front View" width="400"/>
 </p>
 
 ## Credits
