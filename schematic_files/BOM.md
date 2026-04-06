@@ -9,8 +9,6 @@
 - Anker Zolo PowerBank - [Anker Zolo Power Bank, 20,000mAh 30W](https://www.amazon.co.uk/dp/B0CZ9LH53B?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1)
 
 ### 3D-Printed:
-- x2 Servo Mounting Brackets
-- Castor Ball Mounting Bracket
 - Power Bank Stage
 
 ### Standard Components:
