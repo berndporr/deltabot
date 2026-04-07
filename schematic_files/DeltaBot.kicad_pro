@@ -522,7 +522,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "DeltaBot.net",
-      "plot": "../../pcb svg/new schem & pcb/",
+      "plot": "/tmp/gerber/",
       "pos_files": "",
       "specctra_dsn": "",
       "step": "",
