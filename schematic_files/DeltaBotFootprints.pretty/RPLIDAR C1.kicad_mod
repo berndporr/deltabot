@@ -1,0 +1,106 @@
+(footprint "RPLIDAR C1"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "U1"
+		(at 0 -3.5 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(uuid "b1d626ab-ab7e-4833-9186-b4c4f04d2db7")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.3)
+				(bold yes)
+			)
+		)
+	)
+	(property "Value" "RPLIDAR C1"
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.SilkS")
+		(uuid "c02d9533-a220-4b5c-a9aa-c974ecd76cfa")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.2)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "95ff95d8-674b-4872-a711-a0325c188143")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "bc46a858-c59d-4f5c-85d7-abc7152283db")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_rect
+		(start -27.8 -27.8)
+		(end 27.8 27.8)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "0b42d3f2-0436-4206-ad61-6c27d0214b14")
+	)
+	(pad "" np_thru_hole circle
+		(at -21.5 -21.5)
+		(size 3 3)
+		(drill 3)
+		(layers "*.Cu")
+		(thermal_bridge_angle 90)
+		(uuid "59d34735-b5a8-4cfd-995a-450e7e77d66b")
+	)
+	(pad "" np_thru_hole circle
+		(at -21.5 21.5)
+		(size 3 3)
+		(drill 3)
+		(layers "*.Cu")
+		(thermal_bridge_angle 90)
+		(uuid "42779bd4-e227-46aa-a68d-211a5a78b243")
+	)
+	(pad "" np_thru_hole circle
+		(at 21.5 -21.5)
+		(size 3 3)
+		(drill 3)
+		(layers "*.Cu")
+		(thermal_bridge_angle 90)
+		(uuid "58f27b34-6b0c-4998-8c6a-b17ef7415e99")
+	)
+	(pad "" np_thru_hole circle
+		(at 21.5 21.5)
+		(size 3 3)
+		(drill 3)
+		(layers "*.Cu")
+		(thermal_bridge_angle 90)
+		(uuid "10edbed3-391a-4c3a-9a11-be17eef2e486")
+	)
+	(group ""
+		(uuid "5a656170-5e7e-450e-8e12-d7ed02eb6f63")
+		(members "b1d626ab-ab7e-4833-9186-b4c4f04d2db7" "c02d9533-a220-4b5c-a9aa-c974ecd76cfa")
+	)
+	(embedded_fonts no)
+)
