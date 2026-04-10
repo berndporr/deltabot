@@ -1,7 +1,7 @@
 # The Delta Bot
 
 ## What is the Delta Bot?
-The Delta Bot is an open-source DIY robot AI platform that uses Radxa's single board computer, the [Rock 5B](https://radxa.com/products/rock5/5b/), and Parallax's [Continuous Rotation Servo Motors](https://www.parallax.com/product/parallax-continuous-rotation-servo-factory-centered/).
+The Delta Bot is an open-source DIY robot AI platform that uses Radxa's single board computer, the [Rock 5B+](https://radxa.com/products/rock5/5b/), and Parallax's [Continuous Rotation Servo Motors](https://www.parallax.com/product/parallax-continuous-rotation-servo-factory-centered/).
 
 Optionally you can add the C1 LIDAR to the robot: https://github.com/berndporr/c1lidar and of course any compatible camera.
 
@@ -13,16 +13,12 @@ Optionally you can add the C1 LIDAR to the robot: https://github.com/berndporr/c
 ## Hardware
 
 ### Schematics
-- For the list of components used refer to [BOM.md](BOM.md).
-- For details on the DeltaBot schematic, pcb, and footprint library refer to [PCB.md](PCB.md).
+For details on the DeltaBot schematic, pcb, and footprint library refer to the subfolder [schematic_files](schematic_files).
 
 ### Additional Mechanical Parts
-Additional Mechanical Parts were designed in CAD and can be accessed [here](additional_files/deltabot.f3z).
-These were used to secure the external components onto the Single PCB Chassis:
+Additional Mechanical Parts were designed in CAD and can be accessed [here](additional_files/deltabot.f3z):
 <p align="center">
-  <img src="images/bracket2.png" alt="Side View" width="400"/>
   <img src="images/stage.png" alt="Front View" width="400"/>
-  <img src="images/ball.png" alt="Side View" width="400"/>
 </p>
 
 ## Software
@@ -81,39 +77,31 @@ and reboot.
 If all goes well both cameras will show up as:
 
 ```
+media-ctl -p -d 0
+
 rkcif (platform:rkcif-mipi-lvds2):
 	/dev/video0
 	/dev/video1
-	/dev/video2
-	/dev/video3
-	/dev/video4
-	/dev/video5
-	/dev/video6
-	/dev/video7
-	/dev/video8
-	/dev/video9
-	/dev/video10
+...
 	/dev/media0
 
 rkcif (platform:rkcif-mipi-lvds4):
 	/dev/video11
 	/dev/video12
-	/dev/video13
-	/dev/video14
-	/dev/video15
-	/dev/video16
-	/dev/video17
-	/dev/video18
-	/dev/video19
-	/dev/video20
+...
 	/dev/video21
 	/dev/media1
 ```
 
-and:
+which are the raw devices outputting Bayer patterns. The media device 1 is for the 2nd camera raw processing chain.
 
-```v4l2-ctl --device=/dev/v4l-subdev2 -L
-VIDIOC_SUBDEV_S_CLIENT_CAP: failed: Inappropriate ioctl for device
+The media devices 2 and 3 are the Image Signal Processing chains which decode the images into YUV or Grey images.
+
+To config the cameras you you need to config the V4L subdevices:
+
+```
+v4l2-ctl --device=/dev/v4l-subdev2 -L
+v4l2-ctl --device=/dev/v4l-subdev7 -L
 
 User Controls
 
@@ -121,44 +109,10 @@ User Controls
                            gain 0x00980913 (int)    : min=256 max=43663 step=1 default=256 value=21960
                 horizontal_flip 0x00980914 (bool)   : default=0 value=1
                   vertical_flip 0x00980915 (bool)   : default=0 value=1
-
-Image Source Controls
-
-              vertical_blanking 0x009e0901 (int)    : min=36 max=36 step=1 default=36 value=36
-            horizontal_blanking 0x009e0902 (int)    : min=164 max=164 step=1 default=164 value=164
-                  analogue_gain 0x009e0903 (int)    : min=256 max=2816 step=1 default=512 value=512
-
-Image Processing Controls
-
-                 link_frequency 0x009f0901 (intmenu): min=0 max=0 default=0 value=0 (456000000 0x1b2e0200)
-				0: 456000000 (0x1b2e0200)
-                     pixel_rate 0x009f0902 (int64)  : min=0 max=180810000 step=1 default=180810000 value=180810000 flags=read-only
-                   test_pattern 0x009f0903 (menu)   : min=0 max=13 default=0 value=0 (Disabled)
-				0: Disabled
-				1: Solid Black
-				2: Solid White
-				3: Solid Red
-				4: Solid Green
-				5: Solid Blue
-				6: Color Bar
-				7: Fade to Grey Color Bar
-				8: PN9
-				9: 16 Split Color Bar
-				10: 16 Split Inverted Color Bar
-				11: Column Counter
-				12: Inverted Column Counter
-				13: PN31
-
-
 ```
 
-The cameras are mounted upside down so we need to do:
-```
-v4l2-ctl --device=/dev/v4l-subdev2 --set-ctrl=vertical_flip=1
-v4l2-ctl --device=/dev/v4l-subdev2 --set-ctrl=horizontal_flip=1
-v4l2-ctl --device=/dev/v4l-subdev7 --set-ctrl=vertical_flip=1
-v4l2-ctl --device=/dev/v4l-subdev7 --set-ctrl=horizontal_flip=1
-```
+[See the demo dual camera viewer](opencv-camera-callback) how it's all done in C++!
+
 
 ## Credits
 - Saleh AlMulla - 2721704A@student.gla.ac.uk
