@@ -41,11 +41,15 @@ void Camera::setV4Lparameter(const V4LParameter &v4lParameter)
 		int d = query.maximum - query.minimum;
 		struct v4l2_control control;
 		control.id = v4lParameter.parameter;
-		control.value = query.minimum + (int)round(v4lParameter.value * d);
-		if (control.value > query.maximum)
+		if (d == 1) {
+		    control.value = (v4lParameter.value > 0);
+		} else {
+		    control.value = query.minimum + (int)round(v4lParameter.value * d);
+		    if (control.value > query.maximum)
 			control.value = query.maximum;
-		if (control.value < query.minimum)
+		    if (control.value < query.minimum)
 			control.value = query.minimum;
+		}
 		if (ioctl(fd, VIDIOC_S_CTRL, &control) < 0)
 		{
 			perror("Setting Parameter");
@@ -53,9 +57,10 @@ void Camera::setV4Lparameter(const V4LParameter &v4lParameter)
 	}
 	else
 	{
-		perror("Querying video device.");
+		perror("Querying video device");
 		std::cerr << v4lParameter.devicePath << "," << v4lParameter.parameter << "," << v4lParameter.value << std::endl;
 	}
+	close(fd);
 }
 
 /*!

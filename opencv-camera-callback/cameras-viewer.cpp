@@ -29,16 +29,26 @@ int main(int argc, char *argv[])
 	window.startTimer(20);
 
 	OpenCVparameters openCVparameters1;
-	openCVparameters1.deviceID = 22;
-	openCVparameters1.fourcc = cv::VideoWriter::fourcc('N', 'V', '1', '2');
+	openCVparameters1.deviceID = 23;
+	openCVparameters1.fourcc = cv::VideoWriter::fourcc('G', 'R', 'E', 'Y');
+	// 1st camera sensor is v4l-subdev2
 	camera1.start(openCVparameters1,
-				  {{"/dev/v4l-subdev2", V4L2_CID_GAIN, 0.5}});
+		      {
+			  {"/dev/v4l-subdev2", V4L2_CID_GAIN, 0.5},
+			  {"/dev/v4l-subdev2", V4L2_CID_HFLIP, 1},
+			  {"/dev/v4l-subdev2", V4L2_CID_VFLIP, 1}
+		      });
 
 	OpenCVparameters openCVparameters2;
-	openCVparameters2.deviceID = 31;
-	openCVparameters2.fourcc = cv::VideoWriter::fourcc('N', 'V', '1', '2');
+	openCVparameters2.deviceID = 32;
+	openCVparameters2.fourcc = cv::VideoWriter::fourcc('G', 'R', 'E', 'Y');
+	// 2nd camera sensor is v4l-subdev7
 	camera2.start(openCVparameters2,
-				  {{"/dev/v4l-subdev7", V4L2_CID_GAIN, 0.5}});
+		      {
+			  {"/dev/v4l-subdev7", V4L2_CID_GAIN, 0.5},
+			  {"/dev/v4l-subdev7", V4L2_CID_HFLIP, 1},
+			  {"/dev/v4l-subdev7", V4L2_CID_VFLIP, 1}
+		      });
 
 	// Execute the application. This is blocking till the user closes it.
 	app.exec();

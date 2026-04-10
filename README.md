@@ -110,6 +110,56 @@ rkcif (platform:rkcif-mipi-lvds4):
 	/dev/media1
 ```
 
+and:
+
+```v4l2-ctl --device=/dev/v4l-subdev2 -L
+VIDIOC_SUBDEV_S_CLIENT_CAP: failed: Inappropriate ioctl for device
+
+User Controls
+
+                       exposure 0x00980911 (int)    : min=0 max=4095 step=1 default=1575 value=1575
+                           gain 0x00980913 (int)    : min=256 max=43663 step=1 default=256 value=21960
+                horizontal_flip 0x00980914 (bool)   : default=0 value=1
+                  vertical_flip 0x00980915 (bool)   : default=0 value=1
+
+Image Source Controls
+
+              vertical_blanking 0x009e0901 (int)    : min=36 max=36 step=1 default=36 value=36
+            horizontal_blanking 0x009e0902 (int)    : min=164 max=164 step=1 default=164 value=164
+                  analogue_gain 0x009e0903 (int)    : min=256 max=2816 step=1 default=512 value=512
+
+Image Processing Controls
+
+                 link_frequency 0x009f0901 (intmenu): min=0 max=0 default=0 value=0 (456000000 0x1b2e0200)
+				0: 456000000 (0x1b2e0200)
+                     pixel_rate 0x009f0902 (int64)  : min=0 max=180810000 step=1 default=180810000 value=180810000 flags=read-only
+                   test_pattern 0x009f0903 (menu)   : min=0 max=13 default=0 value=0 (Disabled)
+				0: Disabled
+				1: Solid Black
+				2: Solid White
+				3: Solid Red
+				4: Solid Green
+				5: Solid Blue
+				6: Color Bar
+				7: Fade to Grey Color Bar
+				8: PN9
+				9: 16 Split Color Bar
+				10: 16 Split Inverted Color Bar
+				11: Column Counter
+				12: Inverted Column Counter
+				13: PN31
+
+
+```
+
+The cameras are mounted upside down so we need to do:
+```
+v4l2-ctl --device=/dev/v4l-subdev2 --set-ctrl=vertical_flip=1
+v4l2-ctl --device=/dev/v4l-subdev2 --set-ctrl=horizontal_flip=1
+v4l2-ctl --device=/dev/v4l-subdev7 --set-ctrl=vertical_flip=1
+v4l2-ctl --device=/dev/v4l-subdev7 --set-ctrl=horizontal_flip=1
+```
+
 ## Credits
 - Saleh AlMulla - 2721704A@student.gla.ac.uk
 - Bernd Porr -  bernd.porr@glasgow.ac.uk
