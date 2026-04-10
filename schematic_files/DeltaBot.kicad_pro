@@ -665,7 +665,7 @@
       {
         "filename": "DeltaBot.kicad_sch",
         "name": "DeltaBot",
-        "uuid": "00000000-0000-0000-0000-000000000000"
+        "uuid": "9f04e495-2040-4ae6-9603-65340a735169"
       }
     ],
     "used_designators": "",
@@ -674,7 +674,7 @@
   "sheets": [
     [
       "9f04e495-2040-4ae6-9603-65340a735169",
-      "Root"
+      "DeltaBot"
     ]
   ],
   "text_variables": {},
