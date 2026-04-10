@@ -8,13 +8,12 @@
 - x2 Parallax Continuous Rotation Servo Motors - [900-00008 PARALLAX, SERVO- CONTINUOUS ROTATION-S3 SERVO](https://uk.farnell.com/parallax/900-00008/servo-continuous-rotation-s3-servo/dp/2819351?srsltid=AfmBOor-59KId8cjt06daPtLfuqm3XnxUg93HBlsBrfq8Yjar4slnPo3)
 - x2 Kitronic Wheels - [2593-SV KITRONIK, Wheel Kit, White, 5 Spoke, ABS, Rotation Servo Motors | Newark Electronics](https://www.newark.com/kitronik/2593-sv/wheels-white-rotation-servo-motor/dp/30AK0833)
 - Anker Zolo PowerBank - Anker Zolo Power Bank, 20,000mAh 30W
-- SPDT Toggle Switch
-- F3.15L250V fuse
-- x2 1N4007 Diodes
-- Fuse Holder & 3A Fuse
-- 40 pin 2x20 GPIO Stackable Header 2.54mm
-- x2 1x3 Pin Header 2.54mm
-- 1x5 Pin Header 2.54mm - XH2.54-5P 2.54MM straight pin socket
+- 1 x SPDT Toggle Switch
+- 1 x F3.15L250V fuse
+- 1 x Fuse Holder & 3A Fuse
+- 1 x 40 pin 2x20 GPIO Stackable Header 2.54mm
+- 2 x 1x3 Pin Header 2.54mm
+- 1 x 5 Pin Header 2.54mm - XH2.54-5P 2.54MM straight pin socket
 
 ### 3D-Printed:
 - Power Bank Stage
