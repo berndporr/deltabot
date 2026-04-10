@@ -1,6 +1,7 @@
 # Dual camera viewer
 
 ![alt tag](screenshot.png)
+![alt tag](front.jpg)
 
 ## Required packages
 
