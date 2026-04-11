@@ -30,6 +30,7 @@ int main(int argc, char *argv[])
 
 	OpenCVparameters openCVparameters1;
 	openCVparameters1.deviceID = 23;
+	openCVparameters1.framerate = 10;
 	openCVparameters1.fourcc = cv::VideoWriter::fourcc('G', 'R', 'E', 'Y');
 	// 1st camera sensor is v4l-subdev2
 	camera1.start(openCVparameters1,
@@ -39,6 +40,7 @@ int main(int argc, char *argv[])
 
 	OpenCVparameters openCVparameters2;
 	openCVparameters2.deviceID = 32;
+	openCVparameters2.framerate = 10;
 	openCVparameters2.fourcc = cv::VideoWriter::fourcc('G', 'R', 'E', 'Y');
 	// 2nd camera sensor is v4l-subdev7
 	camera2.start(openCVparameters2,

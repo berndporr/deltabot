@@ -41,18 +41,11 @@ void Camera::setV4Lparameter(const V4LParameter &v4lParameter)
 		int d = query.maximum - query.minimum;
 		struct v4l2_control control;
 		control.id = v4lParameter.parameter;
-		if (d == 1)
-		{
-			control.value = (v4lParameter.value > 0);
-		}
-		else
-		{
-			control.value = query.minimum + (int)round(v4lParameter.value * d);
-			if (control.value > query.maximum)
-				control.value = query.maximum;
-			if (control.value < query.minimum)
-				control.value = query.minimum;
-		}
+		control.value = query.minimum + (int)round(v4lParameter.value * d);
+		if (control.value > query.maximum)
+			control.value = query.maximum;
+		if (control.value < query.minimum)
+			control.value = query.minimum;
 		if (ioctl(fd, VIDIOC_S_CTRL, &control) < 0)
 		{
 			perror("Setting Parameter");
@@ -60,10 +53,9 @@ void Camera::setV4Lparameter(const V4LParameter &v4lParameter)
 	}
 	else
 	{
-		perror("Querying video device");
+		perror("Querying video device.");
 		std::cerr << v4lParameter.devicePath << "," << v4lParameter.parameter << "," << v4lParameter.value << std::endl;
 	}
-	close(fd);
 }
 
 /*!
@@ -90,7 +82,18 @@ OpenCVparameters Camera::start(OpenCVparameters openCVparameters,
 	openCVparameters.height = videoCapture.get(cv::CAP_PROP_FRAME_HEIGHT);
 	videoCapture.set(cv::CAP_PROP_CONVERT_RGB, 1);
 	openCVparameters.fourcc = videoCapture.get(cv::CAP_PROP_FOURCC);
-	cameraThread = std::thread(&Camera::threadLoop, this);
+	if (openCVparameters.framerate > 0)
+	{
+		videoCapture.set(cv::CAP_PROP_FPS, openCVparameters.framerate);
+	}
+	openCVparameters.framerate = videoCapture.get(cv::CAP_PROP_FPS);
+
+	// Let see if we have anything to capture
+	if ((openCVparameters.height > 0) && (openCVparameters.width > 0))
+	{
+		// starting capture
+		cameraThread = std::thread(&Camera::threadLoop, this);
+	}
 	return openCVparameters;
 }
 
