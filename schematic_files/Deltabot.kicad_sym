@@ -1268,7 +1268,7 @@
 				(justify bottom)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DeltaBotFootprints:USB_C"
 			(at 3.81 2.54 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1279,7 +1279,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.usb.org/sites/default/files/documents/usb_type-c.zip"
+		(property "Datasheet" ""
 			(at 0 20.32 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -1525,7 +1525,7 @@
 					(type none)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 10.16 10.16 180)
 				(length 5.08)
 				(name "VCC"
@@ -1543,7 +1543,7 @@
 					)
 				)
 			)
-			(pin passive line
+			(pin power_out line
 				(at 10.16 -6.35 180)
 				(length 5.08)
 				(name "GND"
@@ -1554,6 +1554,42 @@
 					)
 				)
 				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_out line
+				(at 7.62 7.62 180)
+				(length 2.54)
+				(name "VCC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_out line
+				(at 7.62 -3.81 180)
+				(length 2.54)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
 					(effects
 						(font
 							(size 1.27 1.27)
