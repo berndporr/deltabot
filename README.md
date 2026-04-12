@@ -18,11 +18,18 @@ The Delta Bot is an open-source DIY robot AI platform that uses Radxa's single b
 ### Schematics
 For details on the DeltaBot schematic, pcb, and footprint library refer to the subfolder [schematic_files](schematic_files).
 
+### Connectors
+
+<img src="conn.png"/>
+
+Plug the right motor into J4, the left motor into J3 and the LIDAR into J2.
+
 ### Additional Mechanical Parts
 Additional Mechanical Parts were designed in CAD and can be accessed [here](additional_files/deltabot.f3z):
 <p align="center">
   <img src="stage.png" alt="Front View" width="400"/>
 </p>
+In particular the "stage" which holds the power bank.
 
 ## Software
 
@@ -60,6 +67,21 @@ Copy the file [90-gpio.rules](90-gpio.rules) to `/etc/udev/rules.d/`. This will
 make sure that the PWM can accessed by any user who's in the gpio group.
 
 The library and example programs how to control the motors are in [wheeleddrive](wheeleddrive).
+
+### LIDAR
+
+Enable the UART for serial communication. Start `sudo nano /boot/armbianEnv.txt`, identify these lines and add `rk3588-uart2-m0` to overlays.
+
+```
+overlay_prefix=
+overlays=rk3588-uart2-m0
+```
+
+Add yourself to the group `dialout` to access /dev/tty*.
+
+Plug the LIDAR into the LIDAR connector on the robot PCB.
+
+The driver and example programs are here: https://github.com/berndporr/c1lidar
 
 ### Raspberry PI V2 Cameras
 
