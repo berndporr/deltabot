@@ -79,8 +79,6 @@ overlays=rk3588-uart2-m0
 
 Add yourself to the group `dialout` to access /dev/tty*.
 
-Plug the LIDAR into the LIDAR connector on the robot PCB.
-
 The driver and example programs are here: https://github.com/berndporr/c1lidar
 
 ### Raspberry PI V2 Cameras
