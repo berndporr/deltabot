@@ -1,13 +1,16 @@
 # The Delta Bot
 
 ## What is the Delta Bot?
-The Delta Bot is an open-source DIY robot AI platform that uses Radxa's single board computer, the [Rock 5B+](https://radxa.com/products/rock5/5b/), and Parallax's [Continuous Rotation Servo Motors](https://www.parallax.com/product/parallax-continuous-rotation-servo-factory-centered/).
+The Delta Bot is an open-source DIY robot AI platform that uses Radxa's single board computer, 
 
-Optionally you can add the C1 LIDAR to the robot: https://github.com/berndporr/c1lidar and of course any compatible camera.
+ - the [Rock 5B+](https://radxa.com/products/rock5/5b/),
+ - Parallax's [Continuous Rotation Servo Motors](https://www.parallax.com/product/parallax-continuous-rotation-servo-factory-centered/),
+ - C1 LIDAR https://github.com/berndporr/c1lidar and
+ - Raspberry PI V2 camera
 
 <p align="center">
-  <img src="images/deltabot.jpg"/>
-  <img src="images/goals.png" />
+  <img src="deltabot.jpg"/>
+  <img src="goals.png" />
 </p>
 
 ## Hardware
@@ -18,7 +21,7 @@ For details on the DeltaBot schematic, pcb, and footprint library refer to the s
 ### Additional Mechanical Parts
 Additional Mechanical Parts were designed in CAD and can be accessed [here](additional_files/deltabot.f3z):
 <p align="center">
-  <img src="images/stage.png" alt="Front View" width="400"/>
+  <img src="stage.png" alt="Front View" width="400"/>
 </p>
 
 ## Software
@@ -33,7 +36,7 @@ Call `armbian-config`:
   - upgrade to Debian "trixie"
   - Make sure you have kernel 26.2.1 Armbian Linux vendor headers 6.1.115-vendor-rk35xx
 
-### Enabling PWM drivers and UART in armbianEnv.txt
+### PWM motor drivers
 
 Start `sudo nano /boot/armbianEnv.txt`, identify these lines and add/edit them that
 they look like these:
@@ -41,7 +44,7 @@ they look like these:
 ```
 console=display
 overlay_prefix=
-overlays=rk3588-pwm14-m0 rk3588-pwm8-m0 rk3588-uart2-m0
+overlays=rk3588-pwm14-m0 rk3588-pwm8-m0
 ```
 
 This enables the UART and PWM on the pins 33 and 34 on the 40 pin header.
@@ -55,6 +58,8 @@ and add yourself and other users to it who want to write to the PWM device.
 
 Copy the file [90-gpio.rules](90-gpio.rules) to `/etc/udev/rules.d/`. This will
 make sure that the PWM can accessed by any user who's in the gpio group.
+
+The library and example programs how to control the motors are in [wheeleddrive](wheeleddrive).
 
 ### Raspberry PI V2 Cameras
 
