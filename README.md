@@ -1,13 +1,16 @@
 # The Delta Bot
 
 ## What is the Delta Bot?
-The Delta Bot is an open-source DIY robot AI platform that uses Radxa's single board computer, the [Rock 5B+](https://radxa.com/products/rock5/5b/), and Parallax's [Continuous Rotation Servo Motors](https://www.parallax.com/product/parallax-continuous-rotation-servo-factory-centered/).
+The Delta Bot is an open-source DIY robot AI platform that uses Radxa's single board computer, 
 
-Optionally you can add the C1 LIDAR to the robot: https://github.com/berndporr/c1lidar and of course any compatible camera.
+ - the [Rock 5B+](https://radxa.com/products/rock5/5b/),
+ - Parallax's [Continuous Rotation Servo Motors](https://www.parallax.com/product/parallax-continuous-rotation-servo-factory-centered/),
+ - C1 LIDAR https://github.com/berndporr/c1lidar and
+ - Raspberry PI V2 camera
 
 <p align="center">
-  <img src="images/deltabot.jpg"/>
-  <img src="images/goals.png" />
+  <img src="deltabot.jpg"/>
+  <img src="goals.png" />
 </p>
 
 ## Hardware
@@ -15,11 +18,18 @@ Optionally you can add the C1 LIDAR to the robot: https://github.com/berndporr/c
 ### Schematics
 For details on the DeltaBot schematic, pcb, and footprint library refer to the subfolder [schematic_files](schematic_files).
 
+### Connectors
+
+<img src="conn.png"/>
+
+Plug the right motor into J4, the left motor into J3 and the LIDAR into J2.
+
 ### Additional Mechanical Parts
 Additional Mechanical Parts were designed in CAD and can be accessed [here](additional_files/deltabot.f3z):
 <p align="center">
-  <img src="images/stage.png" alt="Front View" width="400"/>
+  <img src="stage.png" alt="Front View" width="400"/>
 </p>
+In particular the "stage" which holds the power bank.
 
 ## Software
 
@@ -33,7 +43,7 @@ Call `armbian-config`:
   - upgrade to Debian "trixie"
   - Make sure you have kernel 26.2.1 Armbian Linux vendor headers 6.1.115-vendor-rk35xx
 
-### Enabling PWM drivers and UART in armbianEnv.txt
+### PWM motor drivers
 
 Start `sudo nano /boot/armbianEnv.txt`, identify these lines and add/edit them that
 they look like these:
@@ -41,7 +51,7 @@ they look like these:
 ```
 console=display
 overlay_prefix=
-overlays=rk3588-pwm14-m0 rk3588-pwm8-m0 rk3588-uart2-m0
+overlays=rk3588-pwm14-m0 rk3588-pwm8-m0
 ```
 
 This enables the UART and PWM on the pins 33 and 34 on the 40 pin header.
@@ -55,6 +65,21 @@ and add yourself and other users to it who want to write to the PWM device.
 
 Copy the file [90-gpio.rules](90-gpio.rules) to `/etc/udev/rules.d/`. This will
 make sure that the PWM can accessed by any user who's in the gpio group.
+
+The library and example programs how to control the motors are in [wheeleddrive](wheeleddrive).
+
+### LIDAR
+
+Enable the UART for serial communication. Start `sudo nano /boot/armbianEnv.txt`, identify these lines and add `rk3588-uart2-m0` to overlays.
+
+```
+overlay_prefix=
+overlays=rk3588-uart2-m0
+```
+
+Add yourself to the group `dialout` to access /dev/tty*.
+
+The driver and example programs are here: https://github.com/berndporr/c1lidar
 
 ### Raspberry PI V2 Cameras
 
@@ -97,7 +122,7 @@ which are the raw devices outputting Bayer patterns. The media device 1 is for t
 
 The media devices 2 and 3 are the Image Signal Processing chains which decode the images into YUV or Grey images.
 
-To config the cameras you you need to config the V4L subdevices:
+To config the cameras you need to config V4L subdevices:
 
 ```
 v4l2-ctl --device=/dev/v4l-subdev2 -L

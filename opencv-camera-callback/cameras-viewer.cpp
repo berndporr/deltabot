@@ -31,20 +31,21 @@ int main(int argc, char *argv[])
 	OpenCVparameters openCVparameters1;
 	openCVparameters1.deviceID = 23;
 	openCVparameters1.framerate = 10;
-	openCVparameters1.fourcc = cv::VideoWriter::fourcc('G', 'R', 'E', 'Y');
+        // The only foramts which work are NV12 and GREY
+	openCVparameters1.fourcc = cv::VideoWriter::fourcc('N', 'V', '1', '2');
 	// 1st camera sensor is v4l-subdev2
 	camera1.start(openCVparameters1,
-				  {{"/dev/v4l-subdev2", V4L2_CID_GAIN, 0.5},
+				  {{"/dev/v4l-subdev2", V4L2_CID_GAIN, 0.25},
 				   {"/dev/v4l-subdev2", V4L2_CID_HFLIP, 1},
 				   {"/dev/v4l-subdev2", V4L2_CID_VFLIP, 1}});
 
 	OpenCVparameters openCVparameters2;
 	openCVparameters2.deviceID = 32;
 	openCVparameters2.framerate = 10;
-	openCVparameters2.fourcc = cv::VideoWriter::fourcc('G', 'R', 'E', 'Y');
+	openCVparameters2.fourcc = cv::VideoWriter::fourcc('N', 'V', '1', '2');
 	// 2nd camera sensor is v4l-subdev7
 	camera2.start(openCVparameters2,
-				  {{"/dev/v4l-subdev7", V4L2_CID_GAIN, 0.5},
+				  {{"/dev/v4l-subdev7", V4L2_CID_GAIN, 0.25},
 				   {"/dev/v4l-subdev7", V4L2_CID_HFLIP, 1},
 				   {"/dev/v4l-subdev7", V4L2_CID_VFLIP, 1}});
 
