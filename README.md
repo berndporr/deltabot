@@ -122,7 +122,7 @@ which are the raw devices outputting Bayer patterns. The media device 1 is for t
 
 The media devices 2 and 3 are the Image Signal Processing chains which decode the images into YUV or Grey images.
 
-To config the cameras you you need to config the V4L subdevices:
+To config the cameras you need to config V4L subdevices:
 
 ```
 v4l2-ctl --device=/dev/v4l-subdev2 -L
