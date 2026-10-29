@@ -138,6 +138,11 @@ User Controls
 
 [See the demo dual camera viewer](opencv-camera-callback) how it's all done in C++!
 
+A fixed two-camera mount for repeatable stereo geometry is available in
+[additional_files/stereo_camera_mount](additional_files/stereo_camera_mount).
+
+The dual-camera viewer also applies a colour correction for the ROCK 5 Raspberry Pi Camera V2 setup.
+
 
 ## Credits
 - Saleh AlMulla - 2721704A@student.gla.ac.uk

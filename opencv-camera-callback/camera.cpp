@@ -1,4 +1,5 @@
 #include "camera.h"
+#include <algorithm>
 
 /*!
  * Loops while camera is on to add frames to the pipeline
@@ -18,6 +19,34 @@ void Camera::threadLoop()
 			std::cerr << "ERROR! blank frame grabbed\n";
 			return;
 		}
+
+		// The ROCK 5 camera image can have a strong green cast when the
+		// ISP/AWB pipeline is not active. Apply a lightweight grey-world
+		// white balance before passing the frame to the callback.
+		if (cap.channels() == 3)
+		{
+			std::vector<cv::Mat> channels;
+			cv::split(cap, channels);
+
+			const double meanB = cv::mean(channels[0])[0];
+			const double meanG = cv::mean(channels[1])[0];
+			const double meanR = cv::mean(channels[2])[0];
+
+			const double gray = (meanB + meanG + meanR) / 3.0;
+
+			channels[0].convertTo(
+				channels[0], -1, gray / std::max(meanB, 1.0));
+			channels[1].convertTo(
+				channels[1], -1, gray / std::max(meanG, 1.0));
+			channels[2].convertTo(
+				channels[2], -1, gray / std::max(meanR, 1.0));
+
+			cv::merge(channels, cap);
+
+			// Slightly increase contrast and brightness.
+			cap.convertTo(cap, -1, 1.25, 8.0);
+		}
+
 		if (onFrame)
 		{
 			onFrame(cap);
